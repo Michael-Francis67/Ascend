@@ -6,6 +6,7 @@ import React from "react";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Section from "../ui/Section";
+import { mockServices } from "@/config/services.config";
 
 export interface Service {
   createdAt: string;
@@ -35,7 +36,7 @@ const Services: React.FC = () => {
       const mappedServices = mapServicesWithIcons(data);
       console.log({ mappedServices });
 
-      setServices(mappedServices);
+      setServices(mappedServices ? mappedServices : mockServices);
     } catch (error) {
       console.error("Error fetching services:", error);
     }
