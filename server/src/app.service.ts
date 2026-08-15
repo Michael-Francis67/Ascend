@@ -2,10 +2,9 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHealth(): { status: string; timestamp: string } {
+  getHome(): { message: string } {
     return {
-      status: 'OK',
-      timestamp: new Date().toISOString(),
+      message: 'Hello from the backend.',
     };
   }
 }

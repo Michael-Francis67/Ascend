@@ -12,6 +12,7 @@ export class HealthController {
     // Check database connection
     let dbStatus = 'connected';
     try {
+      // eslint-disable-next-line @typescript-eslint/await-thenable
       await this.prisma.$queryRaw`SELECT 1`;
     } catch {
       dbStatus = 'disconnected';

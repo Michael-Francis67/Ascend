@@ -5,8 +5,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('health')
-  getHealth(): { status: string; timestamp: string } {
-    return this.appService.getHealth();
+  @Get()
+  getHealth(): { message: string } {
+    return this.appService.getHome();
   }
 }
