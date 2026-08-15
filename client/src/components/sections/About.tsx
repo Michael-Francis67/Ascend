@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { sectionsAPI } from "@/lib/api/sections";
 import { motion } from "framer-motion";
 import { Eye, Target, TrendingUp, Zap } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Section from "../ui/Section";
-import Button from "../ui/Button";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import { sectionsAPI } from "@/lib/api/sections";
 
 const stats = [
   { number: "200+", label: "Businesses Transformed" },
@@ -47,10 +46,6 @@ const About: React.FC = () => {
     fetchAbout();
   }, []);
 
-  if (!about) {
-    return <LoadingSpinner />;
-  }
-
   return (
     <Section background="light" padding="lg" id="about">
       <Container>
@@ -63,32 +58,32 @@ const About: React.FC = () => {
             className="space-y-6"
           >
             <span className="text-sm font-semibold text-brand-primary uppercase tracking-wider">
-              {about.title ?? "About Ascend"}
+              {about?.title ?? "About Ascend"}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold">
-              {about.content.heroTitle.split(" ")[0] ?? "Attention"}{" "}
-              {about.content.heroTitle.split(" ")[1] ?? "Is"}{" "}
-              {about.content.heroTitle.split(" ")[2] ?? "The"}{" "}
+              {about?.content.heroTitle.split(" ")[0] ?? "Attention"}{" "}
+              {about?.content.heroTitle.split(" ")[1] ?? "Is"}{" "}
+              {about?.content.heroTitle.split(" ")[2] ?? "The"}{" "}
               <span className="text-brand-primary">
-                {about.content.heroTitle.split(" ")[3] ?? "New"}{" "}
-                {about.content.heroTitle.split(" ")[4] ?? "Currency"}
+                {about?.content.heroTitle.split(" ")[3] ?? "New"}{" "}
+                {about?.content.heroTitle.split(" ")[4] ?? "Currency"}
               </span>
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              {about.content.heroDescription.split(".")[0] ??
+              {about?.content.heroDescription.split(".")[0] ??
                 "The businesses winning today aren't always the ones with the best products."}
               .{" "}
-              {about.content.heroDescription.split(".")[1] ??
+              {about?.content.heroDescription.split(".")[1] ??
                 "They're the ones people remember."}
               .
             </p>
             <p className="text-gray-600 leading-relaxed">
-              {about.content.heroDescription.split(".")[2] ??
+              {about?.content.heroDescription.split(".")[2] ??
                 "At ASCEND, we believe great marketing isn't about posting more content-it's about building a brand people trust."}
               .
             </p>
             <p className="text-gray-600 leading-relaxed">
-              {about.content.heroDescription.split(".")[3] ??
+              {about?.content.heroDescription.split(".")[3] ??
                 "We help businesses transform ideas into compelling stories, create content with purpose, and build marketing systems that attract attention, establish authority, and drive consistent business growth. Every strategy we develop is tailored to your goals, ensuring every campaign moves your business forward."}
               .
             </p>
