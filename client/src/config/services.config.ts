@@ -1,14 +1,13 @@
 import type { Service } from "@/components/sections/Services";
 import {
-  TrendingUp,
-  Video,
-  Share2,
-  Users,
-  Palette,
-  Film,
   Briefcase,
+  Film,
   Lightbulb,
-  ArrowRight,
+  Palette,
+  Share2,
+  TrendingUp,
+  Users,
+  Video,
 } from "lucide-react";
 
 // Your frontend icon and color configuration
