@@ -1,89 +1,11 @@
 import { servicesAPI } from "@/lib/api/index";
+import { mapServicesWithIcons } from "@/lib/serviceMapper";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Briefcase,
-  Film,
-  Lightbulb,
-  Palette,
-  Share2,
-  TrendingUp,
-  Users,
-  Video,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight, type LucideIcon } from "lucide-react";
 import React from "react";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Section from "../ui/Section";
-import { mapServicesWithIcons } from "@/lib/serviceMapper";
-
-const services = [
-  {
-    order: 1,
-    icon: TrendingUp,
-    title: "Content Strategy",
-    description:
-      "Developing data-driven content strategies that align with your business goals and speak directly to your ideal audience.",
-    color: "from-blue-500/10 to-blue-600/10",
-  },
-  {
-    order: 2,
-    icon: Video,
-    title: "Content Creation",
-    description:
-      "Professional videos, photography, commercials, and creative assets designed to elevate your brand.",
-    color: "from-purple-500/10 to-purple-600/10",
-  },
-  {
-    order: 3,
-    icon: Share2,
-    title: "Social Media Marketing",
-    description:
-      "Helping businesses grow online through strategic content distribution and audience engagement.",
-    color: "from-pink-500/10 to-pink-600/10",
-  },
-  {
-    order: 4,
-    icon: Users,
-    title: "Social Media Management",
-    description:
-      "Managing your social presence with planning, publishing, optimization, and community management.",
-    color: "from-orange-500/10 to-orange-600/10",
-  },
-  {
-    order: 5,
-    icon: Palette,
-    title: "Branding",
-    description:
-      "Creating memorable identities that position your business for long-term success.",
-    color: "from-green-500/10 to-green-600/10",
-  },
-  {
-    order: 6,
-    icon: Film,
-    title: "Commercial Video Production",
-    description:
-      "Producing cinematic commercials and promotional videos that tell your story and inspire action.",
-    color: "from-red-500/10 to-red-600/10",
-  },
-  {
-    order: 7,
-    icon: Briefcase,
-    title: "Business Development",
-    description:
-      "Helping businesses identify opportunities, improve positioning, and expand sustainably.",
-    color: "from-indigo-500/10 to-indigo-600/10",
-  },
-  {
-    order: 8,
-    icon: Lightbulb,
-    title: "Marketing Consulting",
-    description:
-      "Providing strategic guidance that helps businesses make smarter marketing decisions.",
-    color: "from-yellow-500/10 to-yellow-600/10",
-  },
-];
 
 export interface Service {
   createdAt: string;

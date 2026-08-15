@@ -1,9 +1,9 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { ExternalLink, Film, Image, Layout, Palette } from "lucide-react";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Play, Image, Film, Layout, Palette } from "lucide-react";
+import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Section from "../ui/Section";
-import Button from "../ui/Button";
 
 const categories = [
   "All",
@@ -70,7 +70,7 @@ const projects = [
 
 const Work: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [, setSelectedProject] = useState<number | null>(null);
 
   const filteredProjects =
     activeCategory === "All"
