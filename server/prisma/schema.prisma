@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Verification {
+  id        String   @id @default(cuid())
+  email     String
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  verified  Boolean  @default(false)
+
+  @@unique([email, otp])
+  @@index([email])
+  @@map("verifications")
+}
+
+model Section {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  title     String
+  content   Json
+  image     String?
+  images    Json?
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sections")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  description String
+  image       String
+  gallery     Json?
+  client      String
+  results     String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String
+  image       String?
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  position  String
+  company   String
+  content   String
+  rating    Int      @default(5)
+  image     String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("testimonials")
+}
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  specialties String[]
+  quote       String?
+  image       String?
+  isActive    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("team_members")
+}
+
+model Setting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       Json
+  type        String   @default("json") // text, json, image, color
+  group       String   @default("general")
+  isPublic    Boolean  @default(false) // Whether this setting is exposed to public API
+  description String? // Optional description of what this setting does
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([group])
+  @@index([isPublic])
+  @@map("settings")
+}
+
+model Upload {
+  id         String   @id @default(cuid())
+  publicId   String   @unique // Cloudinary's public_id
+  url        String // Cloudinary URL
+  secureUrl  String // HTTPS URL
+  format     String
+  width      Int
+  height     Int
+  bytes      Int
+  alt        String?
+  uploadedBy String?
+  createdAt  DateTime @default(now())
+
+  @@index([publicId])
+  @@map("uploads")
+}
