@@ -1,3 +1,4 @@
+import ModeToggle from "@/components/ui/ModeToggle";
 import {
   Bell,
   ChevronDown,
@@ -5,10 +6,8 @@ import {
   Layout,
   LogOut,
   Menu,
-  Moon,
   Search,
   Settings,
-  Sun,
 } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router";
@@ -23,12 +22,6 @@ const TopBar: React.FC<TopBarProps> = ({ onMenuClick, onToggleSidebar }) => {
   const { user, logout } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
 
   return (
     <header className="bg-white border-b border-gray-200 h-16 px-4 md:px-6 flex items-center justify-between flex-shrink-0">
@@ -79,13 +72,7 @@ const TopBar: React.FC<TopBarProps> = ({ onMenuClick, onToggleSidebar }) => {
       {/* Right Section */}
       <div className="flex items-center gap-2">
         {/* Dark Mode Toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          aria-label="Toggle dark mode"
-        >
-          {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+        <ModeToggle />
 
         {/* Notifications */}
         <div className="relative">
