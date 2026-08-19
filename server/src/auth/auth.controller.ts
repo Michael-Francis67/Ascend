@@ -25,7 +25,6 @@ export class AuthController {
     return this.authService.verifyOtp(dto, response);
   }
 
-  @Public()
   @Post('refresh')
   refreshToken(
     @Req() request: ExpressRequest,
