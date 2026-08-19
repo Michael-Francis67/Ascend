@@ -89,7 +89,7 @@ async function bootstrap() {
         'Access-Control-Request-Method',
         'Access-Control-Request-Headers',
       ],
-      exposedHeaders: ['Set-Cookie'],
+      exposedHeaders: ['Set-Cookie', 'Cookie'],
       maxAge: 86400, // 24 hours
       preflightContinue: false,
       optionsSuccessStatus: 204,
