@@ -29,7 +29,7 @@ export class AuthService {
 
     // Check if email matches the admin email from .env
     const adminEmail = this.configService.get<string>('ADMIN_EMAIL');
-    if (email !== adminEmail) {
+    if (email.toLowerCase() !== adminEmail) {
       throw new UnauthorizedException('Invalid email address');
     }
 
@@ -131,22 +131,22 @@ export class AuthService {
 
     // Set cookies with proper options
     const isProduction = this.configService.get('NODE_ENV') === 'production';
-    const cookieOptions = {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: 'lax' as const,
-      path: '/',
-    };
 
     // Set access token cookie
     response.cookie('access_token', accessToken, {
-      ...cookieOptions,
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'lax',
+      path: '/',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
     // Set refresh token cookie
     response.cookie('refresh_token', refreshToken, {
-      ...cookieOptions,
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'lax',
+      path: '/',
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
@@ -210,7 +210,7 @@ export class AuthService {
       response.cookie('access_token', newAccessToken, {
         httpOnly: true,
         secure: isProduction,
-        sameSite: 'lax',
+        sameSite: isProduction ? 'none' : 'lax',
         maxAge: 7 * 24 * 60 * 60 * 1000,
         path: '/',
       });
