@@ -31,7 +31,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const adminEmail = this.configService.get<string>('ADMIN_EMAIL');
 
     // Validate that the token belongs to the admin
-    if (payload.email !== adminEmail || !payload.isAdmin) {
+    if (payload.email.toLowerCase() !== adminEmail || !payload.isAdmin) {
       this.logger.warn('Invalid token payload:', {
         email: payload.email,
         isAdmin: payload.isAdmin,
